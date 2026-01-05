@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROPLUMB | სანტექნიკა - თბილისი, ქუთაისი, ბათუმი</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header id="main-header">
+        <nav class="container">
+            <div class="logo">PRO<span>PLUMB</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">მთავარი</a></li>
+                <li><a href="#services">სერვისები</a></li>
+                <li><a href="#contact">კონტაქტი</a></li>
+            </ul>
+            <div class="header-cta">
+                <a href="tel:+995 598 55 37 55" class="phone-btn"><i class="fas fa-phone-alt"></i>+995 598 55 37 55</a>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="container hero-wrapper">
+            <div class="hero-text">
+                <span class="badge">მომსახურება მთელ საქართველოში</span>
+                <h1>პროფესიონალური <span>სანტექნიკა</span> და დიაგნოსტიკა</h1>
+                <p>თბილისი • ქუთაისი • ბათუმი. აღმოვაჩენთ დაზიანებას ნგრევის გარეშე თანამედროვე აპარატურით.</p>
+                <div class="hero-actions">
+                    <a href="tel:+995 598 55 37 55" class="btn btn-primary">სწრაფი გამოძახება</a>
+                    <a href="#services" class="btn btn-outline">სერვისები</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>ჩვენი მომსახურება</h2>
+                <div class="underline"></div>
+            </div>
+            
+            <div class="service-grid">
+                <div class="s-card" onclick="openModal('plumbing')">
+                    <div class="s-icon"><i class="fas fa-tools"></i></div>
+                    <h3>სანტექნიკა</h3>
+                    <p>მონტაჟი, შეკეთება და სრული წერტილების მოწყობა.</p>
+                    <div class="s-arrow">დეტალურად <i class="fas fa-arrow-right"></i></div>
+                </div>
+
+                <div class="s-card" onclick="openModal('diagnostics')">
+                    <div class="s-icon accent-icon"><i class="fas fa-search-plus"></i></div>
+                    <h3>დიაგნოსტიკა</h3>
+                    <p>გამსკდარი მილების პოვნა კედელსა და იატაკში.</p>
+                    <div class="s-arrow">დეტალურად <i class="fas fa-arrow-right"></i></div>
+                </div>
+
+                <div class="s-card" onclick="openModal('heating')">
+                    <div class="s-icon"><i class="fas fa-fire-alt"></i></div>
+                    <h3>გათბობა</h3>
+                    <p>ქვაბების რემონტი და ცენტრალური სისტემები.</p>
+                    <div class="s-arrow">დეტალურად <i class="fas fa-arrow-right"></i></div>
+                </div>
+
+                <div class="s-card" onclick="openModal('drain')">
+                    <div class="s-icon"><i class="fas fa-water"></i></div>
+                    <h3>მილების წმენდა</h3>
+                    <p>საკანალიზაციო მილების წმენდა აპარატურით.</p>
+                    <div class="s-arrow">დეტალურად <i class="fas fa-arrow-right"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-glass">
+                <h2>საკონტაქტო ინფორმაცია</h2>
+                <div class="info-list">
+                    <a href="tel:+995598553755" class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div><span>ტელეფონი</span><strong>+995 598 55 37 55</strong></div>
+                    </a>
+                    <a href="https://wa.me/+995598553755" target="_blank" class="info-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div><span>WhatsApp</span><strong>მოგვწერეთ ჩატი</strong></div>
+                    </a>
+                    <div class="info-item cities">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <div>
+                            <span>ლოკაციები</span>
+                            <strong>თბილისი • ქუთაისი • ბათუმი</strong>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div><span>ელ-ფოსტა</span><strong>robakidze.giorgi@yahoo.com</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="serviceModal" class="modal">
+        <div class="modal-window">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <footer><p>&copy; 2026 PROPLUMB. ყველა უფლება დაცულია.</p></footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
