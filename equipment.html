@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ტექნიკა | PROPLUMB</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">PRO<span>PLUMB</span></a>
+            <div class="burger">☰</div>
+            <nav class="nav-links">
+                <a href="index.html">მთავარი</a>
+                <a href="services.html">სერვისები</a>
+                <a href="equipment.html" class="active">ტექნიკა</a>
+                <a href="gallery.html">გალერეა</a>
+                <a href="contact.html">კონტაქტი</a>
+                <div id="theme-toggle" class="theme-toggle">◑</div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container section-padding">
+        <h1 style="text-align:center; margin-bottom:50px">ჩვენი ტექნიკა</h1>
+        <div class="grid-3">
+            <div class="card" onclick="openModal('t1')">
+                <div class="card-img" style="background-image: url('images/2.jpg')"></div>
+                <div class="card-body"><h3>თერმოკამერა</h3></div>
+            </div>
+            <div class="card" onclick="openModal('t2')">
+                <div class="card-img" style="background-image: url('images/2.jpg')"></div>
+                <div class="card-body"><h3>ელექტრო ტროსი</h3></div>
+            </div>
+            <div class="card" onclick="openModal('t2')">
+                <div class="card-img" style="background-image: url('images/2.jpg')"></div>
+                <div class="card-body"><h3>ელექტრო ტროსი</h3></div>
+            </div>
+            <div class="card" onclick="openModal('t2')">
+                <div class="card-img" style="background-image: url('images/2.jpg')"></div>
+                <div class="card-body"><h3>ელექტრო ტროსი</h3></div>
+            </div>
+            <div class="card" onclick="openModal('t2')">
+                <div class="card-img" style="background-image: url('images/2.jpg')"></div>
+                <div class="card-body"><h3>ელექტრო ტროსი</h3></div>
+            </div>
+            <div class="card" onclick="openModal('t2')">
+                <div class="card-img" style="background-image: url('images/2.jpg')"></div>
+                <div class="card-body"><h3>ელექტრო ტროსი</h3></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">×</span>
+            <div class="modal-img" id="m-img"></div>
+            <div class="modal-info">
+                <h2 id="m-title"></h2>
+                <p id="m-desc" style="margin:20px 0"></p>
+                <div class="contact-card">
+    <i class="fas fa-phone-alt contact-icon"></i>
+    <h3>ტელეფონი</h3>
+    <p>დაგვიკავშირდით 24/7</p>
+    <a href="tel:+995598553755" class="btn-action">
+        <i class="fas fa-phone-alt"></i> 598 55 37 55
+    </a>
+</div>
+   
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

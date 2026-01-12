@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>გალერეა | PROPLUMB</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">PRO<span>PLUMB</span></a>
+            <div class="burger">☰</div>
+            <nav class="nav-links">
+                <a href="index.html">მთავარი</a>
+                <a href="services.html">სერვისები</a>
+                <a href="equipment.html">ტექნიკა</a>
+                <a href="gallery.html" class="active">გალერეა</a>
+                <a href="contact.html">კონტაქტი</a>
+                <div id="theme-toggle" class="theme-toggle">◑</div>
+            </nav>
+        </div>
+    </header>
+<main class="container section-padding">
+    <h1 style="text-align:center; margin-bottom:50px">შესრულებული სამუშაოები</h1>
+    
+    <div class="grid-3">
+        <div class="card" onclick="expandImage(this)">
+            <div class="card-img" style="background-image: url('images/santeqnik.jpeg'); cursor: zoom-in;"></div>
+        </div>
+        <div class="card" onclick="expandImage(this)">
+            <div class="card-img" style="background-image: url('images/2.jpg'); cursor: zoom-in;"></div>
+        </div>
+        <div class="card" onclick="expandImage(this)">
+            <div class="card-img" style="background-image: url('images/santeqnik.jpeg'); cursor: zoom-in;"></div>
+        </div>
+        </div>
+</main>
+
+<div id="imageModal" class="modal-overlay" onclick="closeImage()">
+    <span class="close-modal">×</span>
+    <img id="expandedImg" style="max-width: 90%; max-height: 80vh; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
+</div>
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <h3>PROPLUMB</h3>
+                <p style="color:#94a3b8">ხარისხი და საიმედოობა.</p>
+            </div>
+            <div>
+                <h3>სოციალური ქსელები</h3>
+                <a href="https://wa.me/995598553755" class="footer-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="https://facebook.com" class="footer-link"><i class="fab fa-facebook-f"></i> Facebook</a>
+            </div>
+            <div>
+                <h3>კონტაქტი</h3>
+                <a href="tel:+995598553755" class="footer-link"><i class="fas fa-phone"></i> 598 55 37 55</a>
+                <a href="mailto:robakidze.giorgi@yahoo.com" class="footer-link"><i class="fas fa-envelope"></i> Email</a>
+
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 PROPLUMB. ყველა უფლება დაცულია.</div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

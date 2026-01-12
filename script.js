@@ -1,53 +1,112 @@
-// Header scroll effect
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('#main-header');
-    header.classList.toggle('scrolled', window.scrollY > 50);
-});
+/* --- 1. მობილური მენიუ (Burger Menu) --- */
+const burger = document.querySelector('.burger');
+const nav = document.querySelector('.nav-links');
+if(burger) {
+    burger.onclick = () => {
+        nav.classList.toggle('active'); // ხსნის/კეტავს მენიუს
+        burger.innerHTML = nav.classList.contains('active') ? '✕' : '☰'; // ცვლის იკონკას
+    };
+}
 
-// Service data
-const serviceData = {
-    'plumbing': {
-        title: "სანტექნიკური მომსახურება",
-        text: "წყალგაყვანილობის სრული სერვისი: თბილისში, ქუთაისსა და ბათუმში. ონკანების, მილებისა და სველი წერტილების მონტაჟი.",
-        images: ["images/santeqnik.jpeg", "images/santeqnik.jpeg"]
+/* --- 2. ღამის რეჟიმი (Theme Switcher) --- */
+const themeBtn = document.getElementById('theme-toggle');
+// ამოწმებს შენახულ თემას ბრაუზერში
+if (localStorage.getItem('theme') === 'dark') document.body.setAttribute('data-theme', 'dark');
+
+if(themeBtn) {
+    themeBtn.onclick = () => {
+        if (document.body.getAttribute('data-theme') === 'dark') {
+            document.body.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'light');
+        } else {
+            document.body.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+    };
+}
+
+/* --- 3. მოდალური ფანჯრის მონაცემები --- */
+const data = {
+    't1': { 
+        title: 'თერმოკამერა', 
+        desc: 'წერტილოვანი დიაგნოსტიკა წყლის გაჟონვის საპოვნელად.', 
+        img: 'images/2.jpg' 
     },
-    'diagnostics': {
-        title: "წერტილოვანი დიაგნოსტიკა",
-        text: "გამსკდარი მილის პოვნა კედელსა და იატაკში ნგრევის გარეშე. ვმუშაობთ უახლესი აპარატურით მთელ საქართველოში.",
-        images: ["images/santeqnik.jpeg", "images/santeqnik.jpeg"]
+    't2': { 
+        title: 'ელექტრო ტროსი', 
+        desc: 'მილების გაწმენდა თანამედროვე აპარატურით.', 
+        img: 'images/santeqnik.jpeg' 
     },
-    'heating': {
-        title: "გათბობის სისტემები",
-        text: "ცენტრალური გათბობის ქვაბების რემონტი და მონტაჟი. სისტემის გამორეცხვა და ოპტიმიზაცია.",
-        images: ["images/santeqnik.jpeg", "images/santeqnik.jpeg", "images/santeqnik.jpeg"]
-    },
-    'drain': {
-        title: "მილების წმენდა",
-        text: "საკანალიზაციო მილების წმენდა და გაჭედილი სისტემების აღდგენა სპეციალური მექანიკური აპარატურით.",
-        images: ["images/santeqnik.jpeg", "images/santeqnik.jpeg"]
+    'montage': { 
+        title: 'მილების მონტაჟი', 
+        desc: 'ხარისხიანი მონტაჟი და გარანტია სამუშაოზე.', 
+        img: 'images/santeqnik.jpeg' 
     }
 };
 
+/* --- 4. სერვისების მოდალის მართვა --- */
 function openModal(id) {
-    const data = serviceData[id];
-    const content = document.getElementById('modalContent');
-    content.innerHTML = `
-        <h2 style="color:var(--dark); font-size: 2rem;">${data.title}</h2>
-        <p style="margin: 20px 0; font-size: 1.1rem;">${data.text}</p>
-        <div class="modal-img-grid">
-            ${data.images.map(src => `<img src="${src}" alt="work">`).join('')}
-        </div>
-        <a href="tel:+995 598 55 37 55" class="btn btn-primary" style="margin-top: 30px; width:100%; text-align:center;">დარეკვა:+995 598 55 37 55</a>
-    `;
-    document.getElementById('serviceModal').style.display = 'block';
-    document.body.style.overflow = 'hidden';
+    const item = data[id];
+    if(item) {
+        const titleEl = document.getElementById('m-title');
+        const descEl = document.getElementById('m-desc');
+        const imgEl = document.getElementById('m-img');
+        const modal = document.getElementById('modal');
+
+        if(titleEl) titleEl.innerText = item.title;
+        if(descEl) descEl.innerText = item.desc;
+        
+        if(imgEl) {
+            // აქ ვუწერთ ფოტოს მისამართს და სტილს, რომ გარანტირებულად გამოჩნდეს
+            imgEl.style.backgroundImage = `url('${item.img}')`;
+            imgEl.style.backgroundSize = 'cover';
+            imgEl.style.backgroundPosition = 'center';
+            imgEl.style.display = 'block'; // აიძულებს ბლოკს გამოჩნდეს
+        }
+
+        if(modal) {
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // თიშავს საიტის სკროლს
+        }
+    }
 }
 
 function closeModal() {
-    document.getElementById('serviceModal').style.display = 'none';
+    const modal = document.getElementById('modal');
+    if(modal) modal.style.display = 'none';
+    document.body.style.overflow = 'auto'; // აბრუნებს სკროლს
+}
+
+/* --- 5. გალერეის სურათის გადიდება --- */
+function expandImage(card) {
+    const imgDiv = card.querySelector('.card-img');
+    if(!imgDiv) return;
+
+    // იღებს ფოტოს მისამართს CSS-იდან
+    const bg = window.getComputedStyle(imgDiv).backgroundImage;
+    const url = bg.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
+    
+    const imageModal = document.getElementById('imageModal');
+    const expandedImg = document.getElementById('expandedImg');
+    
+    if(imageModal && expandedImg) {
+        expandedImg.src = url;
+        imageModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeImage() {
+    const imageModal = document.getElementById('imageModal');
+    if(imageModal) imageModal.style.display = 'none';
     document.body.style.overflow = 'auto';
 }
 
-window.onclick = (e) => {
-    if (e.target.className === 'modal') closeModal();
-};
+/* --- 6. გარე დაჭერით დახურვა --- */
+window.onclick = (e) => { 
+    // თუ დავაჭირეთ მუქ ფონს (overlay), ვხურავთ ორივე ტიპის მოდალს
+    if(e.target.classList.contains('modal-overlay')) {
+        closeModal();
+        closeImage();
+    } 
+}

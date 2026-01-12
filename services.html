@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>სერვისები | PROPLUMB</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">PRO<span>PLUMB</span></a>
+            <div class="burger">☰</div>
+            <nav class="nav-links">
+                <a href="index.html">მთავარი</a>
+                <a href="services.html" class="active">სერვისები</a>
+                <a href="equipment.html">ტექნიკა</a>
+                <a href="gallery.html">გალერეა</a>
+                <a href="contact.html">კონტაქტი</a>
+                <div id="theme-toggle" class="theme-toggle">◑</div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container section-padding">
+        <h1 style="text-align:center; margin-bottom:10px">ჩვენი მომსახურება</h1>
+        <p style="text-align:center; color:#64748b; margin-bottom:50px">თბილისი • ქუთაისი • ბათუმი</p>
+
+        <div class="grid-3">
+            <div class="card" onclick="openModal('montage')">
+                <div class="card-img" style="background-image: url('images/santeqnik.jpeg')"></div>
+                <div class="card-body">
+                    <h3>მილების მონტაჟი</h3>
+                    <p style="color: var(--primary); margin-top: 10px;">დეტალურად</p>
+                </div>
+            </div>
+            <div class="card" onclick="openModal('t1')">
+                <div class="card-img" style="background-image: url('images/santeqnik.jpeg')"></div>
+                <div class="card-body">
+                    <h3>გაჟონვის დიაგნოსტიკა</h3>
+                    <p style="color: var(--primary); margin-top: 10px;">დეტალურად</p>
+                </div>
+            </div>
+            <div class="card" onclick="openModal('t2')">
+                <div class="card-img" style="background-image: url('images/santeqnik.jpeg')"></div>
+                <div class="card-body">
+                    <h3>საკანალიზაციო მომსახურება</h3>
+                    <p style="color: var(--primary); margin-top: 10px;">დეტალურად</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">×</span>
+            <div class="modal-img" id="m-img"></div>
+            <div class="modal-info">
+                <h2 id="m-title"></h2>
+                <p id="m-desc" style="margin:20px 0; color:#64748b"></p>
+                <a href="tel:+995598553755" class="btn-action">დარეკვა</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <a href="index.html" class="logo" style="color:#fff">PRO<span>PLUMB</span></a>
+                <p style="margin-top:20px; color:#94a3b8">პროფესიონალური მომსახურება გარანტიით.</p>
+            </div>
+            <div>
+                <h3>ლოკაციები</h3>
+                <span class="location-tag">თბილისი</span>
+                <span class="location-tag">ქუთაისი</span>
+                <span class="location-tag">ბათუმი</span>
+            </div>
+            <div>
+                <h3>კონტაქტი</h3>
+                <a href="tel:+995598553755" class="footer-link"><i class="fas fa-phone"></i> 598 55 37 55</a>
+                <a href="https://wa.me/995598553755" class="footer-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="mailto:robakidze.giorgi@yahoo.com" class="footer-link"><i class="fas fa-envelope"></i> Email</a>
+
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 PROPLUMB</div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

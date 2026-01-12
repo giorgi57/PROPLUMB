@@ -2,119 +2,114 @@
 <html lang="ka">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PROPLUMB | სანტექნიკა - თბილისი, ქუთაისი, ბათუმი</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PROPLUMB | მთავარი</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* ეს კოდი აიძულებს ბრაუზერს წაშალოს ყველა ზედმეტი დაშორება */
+        html, body {
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+            overflow-x: hidden !important;
+        }
+
+        /* მთავარი სექცია, რომელიც გარანტირებულად გაიშლება */
+        .hero-fix {
+            width: 100% !important;
+            height: 450px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-align: center !important;
+            /* background-size: cover არის გადამწყვეტი */
+            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), 
+                        url('images/index.jpg') no-repeat center center / cover !important;
+            color: #fff !important;
+            margin: 0 !important;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 0 20px;
+        }
+
+        .btn-action {
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        
+        .btn-action:hover {
+            transform: translateY(-3px);
+            background-color: #0ea5e9 !important;
+        }
+    </style>
 </head>
 <body>
 
-    <header id="main-header">
-        <nav class="container">
-            <div class="logo">PRO<span>PLUMB</span></div>
-            <ul class="nav-links">
-                <li><a href="#home">მთავარი</a></li>
-                <li><a href="#services">სერვისები</a></li>
-                <li><a href="#contact">კონტაქტი</a></li>
-            </ul>
-            <div class="header-cta">
-                <a href="tel:+995 598 55 37 55" class="phone-btn"><i class="fas fa-phone-alt"></i>+995 598 55 37 55</a>
-            </div>
-        </nav>
+    <header class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">PRO<span>PLUMB</span></a>
+            <div class="burger">☰</div>
+            <nav class="nav-links">
+                <a href="index.html" class="active">მთავარი</a>
+                <a href="services.html">სერვისები</a>
+                <a href="equipment.html">ტექნიკა</a>
+                <a href="gallery.html">გალერეა</a>
+                <a href="contact.html">კონტაქტი</a>
+                <div id="theme-toggle" class="theme-toggle">◑</div>
+            </nav>
+        </div>
     </header>
 
-    <section id="home" class="hero">
-        <div class="hero-bg"></div>
-        <div class="container hero-wrapper">
-            <div class="hero-text">
-                <span class="badge">მომსახურება მთელ საქართველოში</span>
-                <h1>პროფესიონალური <span>სანტექნიკა</span> და დიაგნოსტიკა</h1>
-                <p>თბილისი • ქუთაისი • ბათუმი. აღმოვაჩენთ დაზიანებას ნგრევის გარეშე თანამედროვე აპარატურით.</p>
-                <div class="hero-actions">
-                    <a href="tel:+995 598 55 37 55" class="btn btn-primary">სწრაფი გამოძახება</a>
-                    <a href="#services" class="btn btn-outline">სერვისები</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="services" class="services">
-        <div class="container">
-            <div class="section-header">
-                <h2>ჩვენი მომსახურება</h2>
-                <div class="underline"></div>
-            </div>
+    <section class="hero-fix">
+        <div class="hero-content">
+            <h1 style="font-size: clamp(28px, 6vw, 48px); font-weight: 800; margin-bottom: 15px; text-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                პროფესიონალური <span style="color: #38bdf8;">სანტექნიკური</span> მომსახურება
+            </h1>
+            <p style="font-size: clamp(16px, 2vw, 20px); margin-bottom: 30px; opacity: 0.9;">
+                თბილისი • ქუთაისი • ბათუმი — 24/7 ოპერატიული დახმარება
+            </p>
             
-            <div class="service-grid">
-                <div class="s-card" onclick="openModal('plumbing')">
-                    <div class="s-icon"><i class="fas fa-tools"></i></div>
-                    <h3>სანტექნიკა</h3>
-                    <p>მონტაჟი, შეკეთება და სრული წერტილების მოწყობა.</p>
-                    <div class="s-arrow">დეტალურად <i class="fas fa-arrow-right"></i></div>
-                </div>
-
-                <div class="s-card" onclick="openModal('diagnostics')">
-                    <div class="s-icon accent-icon"><i class="fas fa-search-plus"></i></div>
-                    <h3>დიაგნოსტიკა</h3>
-                    <p>გამსკდარი მილების პოვნა კედელსა და იატაკში.</p>
-                    <div class="s-arrow">დეტალურად <i class="fas fa-arrow-right"></i></div>
-                </div>
-
-                <div class="s-card" onclick="openModal('heating')">
-                    <div class="s-icon"><i class="fas fa-fire-alt"></i></div>
-                    <h3>გათბობა</h3>
-                    <p>ქვაბების რემონტი და ცენტრალური სისტემები.</p>
-                    <div class="s-arrow">დეტალურად <i class="fas fa-arrow-right"></i></div>
-                </div>
-
-                <div class="s-card" onclick="openModal('drain')">
-                    <div class="s-icon"><i class="fas fa-water"></i></div>
-                    <h3>მილების წმენდა</h3>
-                    <p>საკანალიზაციო მილების წმენდა აპარატურით.</p>
-                    <div class="s-arrow">დეტალურად <i class="fas fa-arrow-right"></i></div>
-                </div>
-            </div>
+            <a href="tel:+995598553755" class="btn-action" style="
+                display: inline-flex; 
+                padding: 15px 45px; 
+                background-color: #38bdf8; 
+                color: #fff; 
+                border-radius: 50px; 
+                text-decoration: none; 
+                font-weight: bold; 
+                font-size: 20px;
+                align-items: center; 
+                gap: 12px;
+                box-shadow: 0 10px 25px rgba(56, 189, 248, 0.4);
+            ">
+                <i class="fas fa-phone-alt"></i> 598 55 37 55
+            </a>
         </div>
     </section>
 
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="contact-glass">
-                <h2>საკონტაქტო ინფორმაცია</h2>
-                <div class="info-list">
-                    <a href="tel:+995598553755" class="info-item">
-                        <i class="fas fa-phone"></i>
-                        <div><span>ტელეფონი</span><strong>+995 598 55 37 55</strong></div>
-                    </a>
-                    <a href="https://wa.me/+995598553755" target="_blank" class="info-item">
-                        <i class="fab fa-whatsapp"></i>
-                        <div><span>WhatsApp</span><strong>მოგვწერეთ ჩატი</strong></div>
-                    </a>
-                    <div class="info-item cities">
-                        <i class="fas fa-map-marked-alt"></i>
-                        <div>
-                            <span>ლოკაციები</span>
-                            <strong>თბილისი • ქუთაისი • ბათუმი</strong>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-envelope"></i>
-                        <div><span>ელ-ფოსტა</span><strong>robakidze.giorgi@yahoo.com</strong></div>
-                    </div>
-                </div>
+    <footer class="footer" style="margin-top: 0 !important;">
+        <div class="container footer-grid">
+            <div>
+                <a href="index.html" class="logo" style="color:#fff">PRO<span>PLUMB</span></a>
+                <p style="margin-top:20px; color:#94a3b8">თქვენი კომფორტი ჩვენი პრიორიტეტია.</p>
+            </div>
+            <div>
+                <h3>ლოკაციები</h3>
+                <span class="location-tag">თბილისი</span>
+                <span class="location-tag">ქუთაისი</span>
+                <span class="location-tag">ბათუმი</span>
+            </div>
+            <div>
+                <h3>კონტაქტი</h3>
+                <a href="tel:+995598553755" class="footer-link"><i class="fas fa-phone-alt"></i> 598 55 37 55</a>
+                <a href="https://wa.me/995598553755" class="footer-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="mailto:robakidze.giorgi@yahoo.com" class="footer-link"><i class="fas fa-envelope"></i> Email</a>
             </div>
         </div>
-    </section>
-
-    <div id="serviceModal" class="modal">
-        <div class="modal-window">
-            <button class="close-modal" onclick="closeModal()">&times;</button>
-            <div id="modalContent"></div>
-        </div>
-    </div>
-
-    <footer><p>&copy; 2026 PROPLUMB. ყველა უფლება დაცულია.</p></footer>
+        <div class="footer-bottom">© 2026 PROPLUMB</div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
