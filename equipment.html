@@ -3,8 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ტექნიკა | AQUA MASTER</title>
+    <title data-translate="eq-page-title">ტექნიკა | AQUA MASTER</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ენის ღილაკების სტილი ნავბარისთვის */
+        .lang-switcher {
+            display: inline-flex;
+            gap: 6px;
+            margin-left: 15px;
+            align-items: center;
+        }
+        .lang-btn {
+            background: transparent;
+            color: var(--text-color, #fff);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 2px 6px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        .lang-btn.active-lang {
+            background-color: #38bdf8;
+            color: #fff;
+            border-color: #38bdf8;
+        }
+        @media (max-width: 768px) {
+            .lang-switcher {
+                margin: 15px 0;
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="navbar">
@@ -12,42 +44,48 @@
             <a href="index.html" class="logo">AQUA<span> MASTER</span></a>
             <div class="burger">☰</div>
             <nav class="nav-links">
-                <a href="index.html">მთავარი</a>
-                <a href="services.html">სერვისები</a>
-                <a href="equipment.html" class="active">ტექნიკა</a>
-                <a href="gallery.html">გალერეა</a>
-                <a href="contact.html">კონტაქტი</a>
+                <a href="index.html" data-translate="nav-home">მთავარი</a>
+                <a href="services.html" data-translate="nav-services">სერვისები</a>
+                <a href="equipment.html" class="active" data-translate="nav-equipment">ტექნიკა</a>
+                <a href="gallery.html" data-translate="nav-gallery">გალერეა</a>
+                <a href="contact.html" data-translate="nav-contact">კონტაქტი</a>
                 <div id="theme-toggle" class="theme-toggle">◑</div>
+                
+                <div class="lang-switcher">
+                    <button onclick="changeLanguage('ka')" id="btn-ka" class="lang-btn active-lang">KA</button>
+                    <button onclick="changeLanguage('en')" id="btn-en" class="lang-btn">EN</button>
+                    <button onclick="changeLanguage('ru')" id="btn-ru" class="lang-btn">RU</button>
+                </div>
             </nav>
         </div>
     </header>
 
     <div class="container section-padding">
-        <h1 style="text-align:center; margin-bottom:50px">ჩვენი ტექნიკა</h1>
+        <h1 style="text-align:center; margin-bottom:50px" data-translate="eq-main-title">ჩვენი ტექნიკა</h1>
         <div class="grid-3">
             <div class="card" onclick="openModal('t1')">
                 <div class="card-img" style="background-image: url('images/2.jpg')"></div>
-                <div class="card-body"><h3>თერმოკამერა</h3></div>
+                <div class="card-body"><h3 data-translate="eq-t1-title">თერმოკამერა</h3></div>
             </div>
             <div class="card" onclick="openModal('t2')">
                 <div class="card-img" style="background-image: url('images/2.jpg')"></div>
-                <div class="card-body"><h3>ელექტრო ტროსი</h3></div>
+                <div class="card-body"><h3 data-translate="eq-t2-title">ელექტრო ტროსი</h3></div>
             </div>
             <div class="card" onclick="openModal('t2')">
                 <div class="card-img" style="background-image: url('images/2.jpg')"></div>
-                <div class="card-body"><h3>ელექტრო ტროსი</h3></div>
+                <div class="card-body"><h3 data-translate="eq-t2-title">ელექტრო ტროსი</h3></div>
             </div>
             <div class="card" onclick="openModal('t2')">
                 <div class="card-img" style="background-image: url('images/2.jpg')"></div>
-                <div class="card-body"><h3>ელექტრო ტროსი</h3></div>
+                <div class="card-body"><h3 data-translate="eq-t2-title">ელექტრო ტროსი</h3></div>
             </div>
             <div class="card" onclick="openModal('t2')">
                 <div class="card-img" style="background-image: url('images/2.jpg')"></div>
-                <div class="card-body"><h3>ელექტრო ტროსი</h3></div>
+                <div class="card-body"><h3 data-translate="eq-t2-title">ელექტრო ტროსი</h3></div>
             </div>
             <div class="card" onclick="openModal('t2')">
                 <div class="card-img" style="background-image: url('images/2.jpg')"></div>
-                <div class="card-body"><h3>ელექტრო ტროსი</h3></div>
+                <div class="card-body"><h3 data-translate="eq-t2-title">ელექტრო ტროსი</h3></div>
             </div>
         </div>
     </div>
@@ -57,19 +95,22 @@
             <span class="close-modal" onclick="closeModal()">×</span>
             <div class="modal-img" id="m-img"></div>
             <div class="modal-info">
-                <h2 id="m-title"></h2>
-                <p id="m-desc" style="margin:20px 0"></p>
+                <h2 id="m-title" data-modal-title=""></h2>
+                <p id="m-desc" style="margin:20px 0" data-modal-desc=""></p>
+                
                 <div class="contact-card">
-    <i class="fas fa-phone-alt contact-icon"></i>
-    <h3>ტელეფონი</h3>
-    <p>დაგვიკავშირდით 24/7</p>
-    <a href="tel:+995598553755" class="btn-action">
-        <i class="fas fa-phone-alt"></i> 598 *** ***
-    </a>
-</div>
-   
+                    <i class="fas fa-phone-alt contact-icon"></i>
+                    <h3 data-translate="eq-modal-phone">ტელეფონი</h3>
+                    <p data-translate="eq-modal-support">დაგვიკავშირდით 24/7</p>
+                    <a href="tel:+995598553755" class="btn-action" data-translate="eq-modal-btn">
+                        <i class="fas fa-phone-alt"></i> 598 55 37 55
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
+
+    <script src="translations.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

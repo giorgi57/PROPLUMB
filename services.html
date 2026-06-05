@@ -3,9 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>სერვისები | AQUA MASTER</title>
+    <title data-translate="services-page-title">სერვისები | AQUA MASTER</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ენის ღილაკების სტილი ნავბარისთვის */
+        .lang-switcher {
+            display: inline-flex;
+            gap: 6px;
+            margin-left: 15px;
+            align-items: center;
+        }
+        .lang-btn {
+            background: transparent;
+            color: var(--text-color, #fff);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 2px 6px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        .lang-btn.active-lang {
+            background-color: #38bdf8;
+            color: #fff;
+            border-color: #38bdf8;
+        }
+        @media (max-width: 768px) {
+            .lang-switcher {
+                margin: 15px 0;
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="navbar">
@@ -13,48 +44,48 @@
             <a href="index.html" class="logo">AQUA<span> MASTER</span></a>
             <div class="burger">☰</div>
             <nav class="nav-links">
-                <a href="index.html">მთავარი</a>
-                <a href="services.html" class="active">სერვისები</a>
-                <a href="equipment.html">ტექნიკა</a>
-                <a href="gallery.html">გალერეა</a>
-                <a href="contact.html">კონტაქტი</a>
+                <a href="index.html" data-translate="nav-home">მთავარი</a>
+                <a href="services.html" class="active" data-translate="nav-services">სერვისები</a>
+                <a href="equipment.html" data-translate="nav-equipment">ტექნიკა</a>
+                <a href="gallery.html" data-translate="nav-gallery">გალერეა</a>
+                <a href="contact.html" data-translate="nav-contact">კონტაქტი</a>
                 <div id="theme-toggle" class="theme-toggle">◑</div>
+                
+                <div class="lang-switcher">
+                    <button onclick="changeLanguage('ka')" id="btn-ka" class="lang-btn active-lang">KA</button>
+                    <button onclick="changeLanguage('en')" id="btn-en" class="lang-btn">EN</button>
+                    <button onclick="changeLanguage('ru')" id="btn-ru" class="lang-btn">RU</button>
+                </div>
             </nav>
         </div>
     </header>
 
     <main class="container section-padding">
-        <h1 style="text-align:center; margin-bottom:10px">ჩვენი მომსახურება</h1>
-        <p style="text-align:center; color:#64748b; margin-bottom:50px">თბილისი • ქუთაისი • ბათუმი</p>
+        <h1 style="text-align:center; margin-bottom:10px" data-translate="services-main-title">ჩვენი მომსახურება</h1>
+        <p style="text-align:center; color:#64748b; margin-bottom:50px" data-translate="hero-subtitle">თბილისი • ქუთაისი • ბათუმი</p>
 
         <div class="grid-3">
             <div class="card" onclick="openModal('montage')">
                 <div class="card-img" style="background-image: url('images/santeqnik.jpeg')"></div>
                 <div class="card-body">
-                    <h3>მილების მონტაჟი</h3>
-                    <p style="color: var(--primary); margin-top: 10px;">დეტალურად</p>
+                    <h3 data-translate="srv-montage-title">მილების მონტაჟი</h3>
+                    <p style="color: var(--primary); margin-top: 10px;" data-translate="srv-more">დეტალურად</p>
                 </div>
             </div>
             <div class="card" onclick="openModal('t1')">
                 <div class="card-img" style="background-image: url('images/santeqnik.jpeg')"></div>
                 <div class="card-body">
-                    <h3>გაჟონვის დიაგნოსტიკა</h3>
-                    <p style="color: var(--primary); margin-top: 10px;">დეტალურად</p>
+                    <h3 data-translate="srv-leak-title">გაჟონვის დიაგნოსტიკა</h3>
+                    <p style="color: var(--primary); margin-top: 10px;" data-translate="srv-more">დეტალურად</p>
                 </div>
             </div>
             <div class="card" onclick="openModal('t2')">
                 <div class="card-img" style="background-image: url('images/santeqnik.jpeg')"></div>
                 <div class="card-body">
-                    <h3>საკანალიზაციო მომსახურება</h3>
-                    <p style="color: var(--primary); margin-top: 10px;">დეტალურად</p>
+                    <h3 data-translate="srv-sewage-title">საკანალიზაციო მომსახურება</h3>
+                    <p style="color: var(--primary); margin-top: 10px;" data-translate="srv-more">დეტალურად</p>
                 </div>
             </div>
-            <div class="card" onclick="openModal('t2')">
-                <div class="card-img" style="background-image: url('images/santeqnik.jpeg')"></div>
-                <div class="card-body">
-                    <h3>საკანალიზაციო მომსახურება</h3>
-                    <p style="color: var(--primary); margin-top: 10px;">დეტალურად</p>
-                </div>
         </div>
     </main>
 
@@ -63,9 +94,9 @@
             <span class="close-modal" onclick="closeModal()">×</span>
             <div class="modal-img" id="m-img"></div>
             <div class="modal-info">
-                <h2 id="m-title"></h2>
-                <p id="m-desc" style="margin:20px 0; color:#64748b"></p>
-                <a href="tel:+995 *** *** ***" class="btn-action">დარეკვა</a>
+                <h2 id="m-title" data-modal-title=""></h2>
+                <p id="m-desc" style="margin:20px 0; color:#64748b" data-modal-desc=""></p>
+                <a href="tel:+995598553755" class="btn-action" data-translate="modal-call">დარეკვა</a>
             </div>
         </div>
     </div>
@@ -74,25 +105,25 @@
         <div class="container footer-grid">
             <div>
                 <a href="index.html" class="logo" style="color:#fff">AQUA<span> MASTER</span></a>
-                <p style="margin-top:20px; color:#94a3b8">პროფესიონალური მომსახურება გარანტიით.</p>
+                <p style="margin-top:20px; color:#94a3b8" data-translate="footer-services-text">პროფესიონალური მომსახურება გარანტიით.</p>
             </div>
             <div>
-                <h3>ლოკაციები</h3>
-                <span class="location-tag">თბილისი</span>
-                <span class="location-tag">ქუთაისი</span>
-                <span class="location-tag">ბათუმი</span>
+                <h3 data-translate="footer-locations">ლოკაციები</h3>
+                <span class="location-tag" data-translate="loc-tbilisi">თბილისი</span>
+                <span class="location-tag" data-translate="loc-kutaisi">ქუთაისი</span>
+                <span class="location-tag" data-translate="loc-batumi">ბათუმი</span>
             </div>
             <div>
-                <h3>კონტაქტი</h3>
-                <a href="tel:+995 *** *** ***" class="footer-link"><i class="fas fa-phone"></i> 598 *** ***</a>
-                <a href="https://wa.me/995 *** *** ***" class="footer-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <h3 data-translate="footer-contact">კონტაქტი</h3>
+                <a href="tel:+995598553755" class="footer-link"><i class="fas fa-phone"></i> 598 55 37 55</a>
+                <a href="https://wa.me/995598553755" target="_blank" class="footer-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                 <a href="mailto:robakidze.giorgi@yahoo.com" class="footer-link"><i class="fas fa-envelope"></i> Email</a>
-
             </div>
         </div>
         <div class="footer-bottom">© 2026 AQUA MASTER</div>
     </footer>
 
+    <script src="translations.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

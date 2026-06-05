@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>AQUA MASTER | მთავარი</title>
+    <title data-translate="page-title">AQUA MASTER | მთავარი</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -43,6 +43,36 @@
             transform: translateY(-3px);
             background-color: #0ea5e9 !important;
         }
+
+        /* ენის ღილაკების სტილი პირდაპირ აქ, ნავბარისთვის */
+        .lang-switcher {
+            display: inline-flex;
+            gap: 6px;
+            margin-left: 15px;
+            align-items: center;
+        }
+        .lang-btn {
+            background: transparent;
+            color: var(--text-color, #fff); /* მოერგება თემას */
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 2px 6px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        .lang-btn.active-lang {
+            background-color: #38bdf8;
+            color: #fff;
+            border-color: #38bdf8;
+        }
+        @media (max-width: 768px) {
+            .lang-switcher {
+                margin: 15px 0;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -52,22 +82,29 @@
             <a href="index.html" class="logo">AQUA<span> MASTER</span></a>
             <div class="burger">☰</div>
             <nav class="nav-links">
-                <a href="index.html" class="active">მთავარი</a>
-                <a href="services.html">სერვისები</a>
-                <a href="equipment.html">ტექნიკა</a>
-                <a href="gallery.html">გალერეა</a>
-                <a href="contact.html">კონტაქტი</a>
+                <a href="index.html" class="active" data-translate="nav-home">მთავარი</a>
+                <a href="services.html" data-translate="nav-services">სერვისები</a>
+                <a href="equipment.html" data-translate="nav-equipment">ტექნიკა</a>
+                <a href="gallery.html" data-translate="nav-gallery">გალერეა</a>
+                <a href="contact.html" data-translate="nav-contact">კონტაქტი</a>
                 <div id="theme-toggle" class="theme-toggle">◑</div>
+                
+                <!-- ენის გადასართველი მენიუ ნავბარში -->
+                <div class="lang-switcher">
+                    <button onclick="changeLanguage('ka')" id="btn-ka" class="lang-btn active-lang">KA</button>
+                    <button onclick="changeLanguage('en')" id="btn-en" class="lang-btn">EN</button>
+                    <button onclick="changeLanguage('ru')" id="btn-ru" class="lang-btn">RU</button>
+                </div>
             </nav>
         </div>
     </header>
 
     <section class="hero-fix">
         <div class="hero-content">
-            <h1 style="font-size: clamp(28px, 6vw, 48px); font-weight: 800; margin-bottom: 15px; text-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+            <h1 style="font-size: clamp(28px, 6vw, 48px); font-weight: 800; margin-bottom: 15px; text-shadow: 0 4px 15px rgba(0,0,0,0.5);" data-translate="hero-title">
                 პროფესიონალური <span style="color: #38bdf8;">სანტექნიკური</span> მომსახურება
             </h1>
-            <p style="font-size: clamp(16px, 2vw, 20px); margin-bottom: 30px; opacity: 0.9;">
+            <p style="font-size: clamp(16px, 2vw, 20px); margin-bottom: 30px; opacity: 0.9;" data-translate="hero-subtitle">
                 თბილისი • ქუთაისი • ბათუმი — 24/7 ოპერატიული დახმარება
             </p>
             
@@ -83,8 +120,8 @@
                 align-items: center; 
                 gap: 12px;
                 box-shadow: 0 10px 25px rgba(56, 189, 248, 0.4);
-            ">
-                <i class="fas fa-phone-alt"></i> +995 *** *** ***
+            " data-translate="hero-btn">
+                <i class="fas fa-phone-alt"></i> +995 598 55 37 55
             </a>
         </div>
     </section>
@@ -93,24 +130,26 @@
         <div class="container footer-grid">
             <div>
                 <a href="index.html" class="logo" style="color:#fff">AQUA<span> MASTER</span></a>
-                <p style="margin-top:20px; color:#94a3b8">თქვენი კომფორტი ჩვენი პრიორიტეტია.</p>
+                <p style="margin-top:20px; color:#94a3b8" data-translate="footer-text">თქვენი კომფორტი ჩვენი პრიორიტეტია.</p>
             </div>
             <div>
-                <h3>ლოკაციები</h3>
-                <span class="location-tag">თბილისი</span>
-                <span class="location-tag">ქუთაისი</span>
-                <span class="location-tag">ბათუმი</span>
+                <h3 data-translate="footer-locations">ლოკაციები</h3>
+                <span class="location-tag" data-translate="loc-tbilisi">თბილისი</span>
+                <span class="location-tag" data-translate="loc-kutaisi">ქუთაისი</span>
+                <span class="location-tag" data-translate="loc-batumi">ბათუმი</span>
             </div>
             <div>
-                <h3>კონტაქტი</h3>
-                <a href="tel:+995 *** *** ***" class="footer-link"><i class="fas fa-phone-alt"></i> *** *** ***</a>
-                <a href="https://wa.me/995 *** *** ***" class="footer-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <h3 data-translate="footer-contact">კონტაქტი</h3>
+                <a href="tel:+995598553755" class="footer-link"><i class="fas fa-phone-alt"></i> 598 55 37 55</a>
+                <a href="https://wa.me/995598553755" target="_blank" class="footer-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                 <a href="mailto:robakidze.giorgi@yahoo.com" class="footer-link"><i class="fas fa-envelope"></i> Email</a>
             </div>
         </div>
         <div class="footer-bottom">© 2026 AQUA MASTER</div>
     </footer>
 
+    <!-- ჯერ იტვირთება თარგმანების ბაზა, მერე ძირითადი სკრიპტი -->
+    <script src="translations.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

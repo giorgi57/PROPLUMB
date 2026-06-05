@@ -25,49 +25,71 @@ if(themeBtn) {
     };
 }
 
-/* --- 3. მოდალური ფანჯრის მონაცემები --- */
-const data = {
-    't1': { 
-        title: 'თერმოკამერა', 
-        desc: 'წერტილოვანი დიაგნოსტიკა წყლის გაჟონვის საპოვნელად.', 
-        img: 'images/2.jpg' 
-    },
-    't2': { 
-        title: 'ელექტრო ტროსი', 
-        desc: 'მილების გაწმენდა თანამედროვე აპარატურით.', 
-        img: 'images/santeqnik.jpeg' 
-    },
-    'montage': { 
-        title: 'მილების მონტაჟი', 
-        desc: 'ხარისხიანი მონტაჟი და გარანტია სამუშაოზე.', 
-        img: 'images/santeqnik.jpeg' 
-    }
-};
-
-/* --- 4. სერვისების მოდალის მართვა --- */
+/* --- 3. სერვისებისა და ტექნიკის მოდალის მართვა (სამენოვანი ლოგიკით) --- */
 function openModal(id) {
-    const item = data[id];
-    if(item) {
-        const titleEl = document.getElementById('m-title');
-        const descEl = document.getElementById('m-desc');
-        const imgEl = document.getElementById('m-img');
-        const modal = document.getElementById('modal');
+    const titleEl = document.getElementById('m-title');
+    const descEl = document.getElementById('m-desc');
+    const imgEl = document.getElementById('m-img');
+    const modal = document.getElementById('modal');
+    const currentLang = localStorage.getItem('selectedLanguage') || 'ka';
 
-        if(titleEl) titleEl.innerText = item.title;
-        if(descEl) descEl.innerText = item.desc;
-        
-        if(imgEl) {
-            // აქ ვუწერთ ფოტოს მისამართს და სტილს, რომ გარანტირებულად გამოჩნდეს
-            imgEl.style.backgroundImage = `url('${item.img}')`;
-            imgEl.style.backgroundSize = 'cover';
-            imgEl.style.backgroundPosition = 'center';
-            imgEl.style.display = 'block'; // აიძულებს ბლოკს გამოჩნდეს
-        }
+    let titleKey = '';
+    let descKey = '';
+    let imgUrl = '';
 
-        if(modal) {
-            modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // თიშავს საიტის სკროლს
+    // არჩევს სწორ გასაღებებს translations.js-ისთვის და შესაბამის სურათებს
+    if (id === 'montage') {
+        titleKey = 'srv-montage-title';
+        descKey = 'srv-montage-desc';
+        imgUrl = 'images/santeqnik.jpeg';
+    } else if (id === 't1') {
+        // თუ ვართ ტექნიკის გვერდზე
+        if (document.title.includes('ტექნიკა') || document.title.includes('Equipment') || document.title.includes('Техника')) {
+            titleKey = 'eq-t1-title';
+            descKey = 'eq-t1-desc';
+            imgUrl = 'images/2.jpg';
+        } else { // თუ ვართ სერვისების გვერდზე
+            titleKey = 'srv-leak-title';
+            descKey = 'srv-leak-desc';
+            imgUrl = 'images/santeqnik.jpeg';
         }
+    } else if (id === 't2') {
+        // თუ ვართ ტექნიკის გვერდზე
+        if (document.title.includes('ტექნიკა') || document.title.includes('Equipment') || document.title.includes('Техника')) {
+            titleKey = 'eq-t2-title';
+            descKey = 'eq-t2-desc';
+            imgUrl = 'images/2.jpg';
+        } else { // თუ ვართ სერვისების გვერდზე
+            titleKey = 'srv-sewage-title';
+            descKey = 'srv-sewage-desc';
+            imgUrl = 'images/santeqnik.jpeg';
+        }
+    }
+
+    // ვინახავთ გასაღებებს ატრიბუტებში, რომ ენის ღილაკზე დაჭერისას რეალურ დროში გადათარგმნოს
+    if(titleEl && descEl) {
+        titleEl.setAttribute('data-modal-title', titleKey);
+        descEl.setAttribute('data-modal-desc', descKey);
+
+        // ვსვამთ ტექსტს მიმდინარე ენის მიხედვით translations ობიექტიდან
+        if (typeof translations !== 'undefined' && translations[currentLang]) {
+            titleEl.textContent = translations[currentLang][titleKey] || '';
+            descEl.textContent = translations[currentLang][descKey] || '';
+        }
+    }
+    
+    // ფოტოს გამოჩენის გარანტირებული კოდი შენი ძველი ვერსიიდან
+    if(imgEl && imgUrl) {
+        imgEl.style.backgroundImage = `url('${imgUrl}')`;
+        imgEl.style.backgroundSize = 'cover';
+        imgEl.style.backgroundPosition = 'center';
+        imgEl.style.display = 'block';
+    }
+
+    // მოდალის გამოჩენა და სკროლის გათიშვა
+    if(modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
     }
 }
 
@@ -77,7 +99,7 @@ function closeModal() {
     document.body.style.overflow = 'auto'; // აბრუნებს სკროლს
 }
 
-/* --- 5. გალერეის სურათის გადიდება --- */
+/* --- 4. გალერეის სურათის გადიდება --- */
 function expandImage(card) {
     const imgDiv = card.querySelector('.card-img');
     if(!imgDiv) return;
@@ -102,7 +124,7 @@ function closeImage() {
     document.body.style.overflow = 'auto';
 }
 
-/* --- 6. გარე დაჭერით დახურვა --- */
+/* --- 5. გარე დაჭერით დახურვა --- */
 window.onclick = (e) => { 
     // თუ დავაჭირეთ მუქ ფონს (overlay), ვხურავთ ორივე ტიპის მოდალს
     if(e.target.classList.contains('modal-overlay')) {
